@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="..static/js/results.js" th:href="@{/js/results.js}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link th:href="@{/css/results.css}" rel="stylesheet">
+    <link href="../static/css/results.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+<!--Navigation bar, Logo and footer-->
+<nav class="navbar navbar-default">
+    <div>
+        <ul class="top">
+            <a class="active" >
+                <li><img src="just_Brain.png" alt="Logo" style="width:5%;height:5%;">
+                    <h1 class="MoodVerse">
+                        <span>M</span><span>o</span><span>o</span><span>d</span><span>V</span><span>e</span><span>r</span><span>s</span><span>e</span>
+                    </h1>
+                </li>
+                <li>
+                    <h2>[[${session.user.FirstName}]]</h2>
+                </li>
+            </a>
+        </ul>
+        <ul class="navBar">
+            <div th:if="${session.user.FirstName != 'guest'}" >
+            <li style="float:right"><a class="active" href="/profile">Profile</a></li>
+            <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+            </div>
+            <li style="float:right"><a class="active" href="/About">About</a></li>
+
+            <div th:if="${session.user.FirstName == 'guest'}" >
+                <li style="float:right"><a class="active" href="/logout">Close</a></li>
+            </div>
+
+        </ul>
+    </div>
+</nav>
+
+
+<!--Containers for each movie suggestion-->
+<div class="w3-container" th:each="movie:${session.MovieArray}">
+
+    <div class="w3-panel w3-card w3-grey">
+        <h4>Title: [[${movie.title}]]</h4>
+        <h4>Year: [[${movie.year}]]</h4>
+        <h4>Popularity: [[${movie.popularity}]]</h4>
+        <p>Description: [[${movie.description}]]</p>
+        <img th:src="'https://image.tmdb.org/t/p/w1280' + ${movie.Poster_path}" alt="Image Path" width="200"></img>
+
+    </div>
+
+</div>
+
+
+<p></p>
+<div class="bottom">
+    <p> © Junaid, Shubham, Irina, Joy</p>
+</div>
+</body>
+
+</html>

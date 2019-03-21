@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SIGNUP</title>
+
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!--INTERNAL-->
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/registration.css" th:href="@{/css/registration.css}">
+    <script src="main.js"></script>
+</head>
+
+<body>
+
+<!--NAVBAR-->
+    <nav class="navbar navbar-expand-md">
+        <a class="navbar-brand active" href="/">
+            <img src="leftBrainRightBrain.png" alt="Logo" style="height: 70px;">
+        </a>
+    </nav>
+
+<!--REGISTRATION-->
+    <div class="container">
+        <div id="login-box">
+            <div class="left">
+              <h1>Sign up</h1>
+                <br>
+
+              <form action="/registration" method="POST" th:object="${user}">
+                  <p th:if="${#fields.hasErrors('firstName')}">Incorrect First Name!</p>
+                  <input type="text" th:field="*{firstName}" placeholder="FirstName" />
+                  <p th:if="${#fields.hasErrors('lastName')}">Incorrect Last Name!</p>
+                  <input type="text" th:field="*{lastName}" placeholder="LastName" />
+                  <p th:if="${#fields.hasErrors('email')}">Incorrect Email!</p>
+                  <input type="text" th:field="*{email}"  placeholder="E-mail" />
+                  <p th:if="${#fields.hasErrors('password')}">Incorrect Password!</p>
+                  <input type="password" th:field="*{password}" placeholder="Password" />
+                  <input type="submit" name="signup_submit" value="Sign me up" action="/registration" method="post"/>
+              </form>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

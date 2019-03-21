@@ -1,10 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Home Draft 2</title>
+
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!--INTERNAL-->
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/registration.css" th:href="@{/css/registration.css}">
+    <script src="main.js"></script>
+
 </head>
 <body>
+<!--NAVBAR-->
+    <nav class="navbar navbar-expand-md">
+        <a class="navbar-brand active" href="/">
+            <img src="leftBrainRightBrain.png" alt="Logo" style="height: 70px;">
+        </a>
+    </nav>
+
+    <ul class="navBar">
+    <!--
+    <li style="float:right"><p th:if="${session.user.FirstName = guest}"  class="active" >Results Guest</p></li>
+    -->
+    <div th:if="${session.user.FirstName != 'guest'}" >
+        <li style="float:right"><a   href="/profile" >Profile</a></li>
+        <li style="float:right"><a   href="/logout" >Logout</a></li>
+    </div>
+    </ul>
+
+    <form action="home" method="POST">
+        <div class="container-fluid">
+            <div class="bgPulse">
+                <span><button type="submit" name="color" value="red" id="button1"></button></span>
+                <span><button type="submit" name="color" value="orange" id="button2"></button></span>
+                <span><button type="submit" name="color" value="yellow" id="button3"></button></span>
+                <span><button type="submit" name="color" value="bright_green" id="button4"></button></span>
+                <span><button type="submit" name="color" value="dark_green" id="button5"></button></span>
+                <span><button type="submit" name="color" value="sky_blue" id="button6"></button></span>
+                <span><button type="submit" name="color" value="blue" id="button7"></button></span>
+                <span><button type="submit" name="color" value="purple" id="button8"></button></span>
+            </div>
+        </div>
+    </form>
 
 </body>
 </html>

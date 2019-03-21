@@ -1,10 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LOGIN</title>
+
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!--INTERNAL-->
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/registration.css" th:href="@{/css/registration.css}">
+    <script src="main.js"></script>
 </head>
 <body>
 
+<!--NAVBAR-->
+    <nav class="navbar navbar-expand-md">
+        <a class="navbar-brand active" href="/">
+            <img src="leftBrainRightBrain.png" alt="Logo" style="height: 70px;">
+        </a>
+    </nav>
+
+<!--LOGIN-->
+    <div class="container">
+        <div id="login-box">
+            <div class="left">
+                <h1>Log in</h1>
+                <br>
+                <div>
+
+                    <form action="/" method="POST" role = "form">
+                        <input type="text" name = "email"  placeholder="E-mail" value = "email"/>
+                        <input type="password" name = "password" placeholder="Password" value = "password" />
+                        <input type="submit" name="login_submit" value="Log in" action="/home" method="POST"/>
+                    </form>
+                    <form accept-charset="UTF-8" role="form" action = "/" method ="POST">
+                        <input type="hidden" name="email" value="guest@guest.com">
+                        <input type="hidden" name="password" value="123456">
+                        <input class="btn btn-lg btn-success btn-block" type="submit" value="Continue as guest">
+                    </form>
+
+                    <p><a href="/registration">Sign Up</a></p>
+                    <p><a href="/passwordReset">Forgot Password</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
+

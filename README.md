@@ -1,2 +1,2 @@
-# Graduation-project-MoodVerse
-Movie recommendation system based on color selections.
+# moodVerse
+A mood based movie and music recommendation system

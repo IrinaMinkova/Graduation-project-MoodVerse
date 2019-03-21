@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<head>
+    <meta charset="UTF-8">
+    <title>RESULTS</title>
+
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!--EXTERNAL STYLES-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+
+    <!--INTERNAL SCRIPTS & STYLES-->
+    <link href="../static/css/results.css" rel="stylesheet" th:href="@{/css/results.css}">
+</head>
+
+<body>
+
+<!--NAVBAR-->
+    <nav class="navbar navbar-expand-md">
+        <a class="navbar-brand active" href="/">
+            <img src="leftBrainRightBrain.png" alt="Logo" style="height: 70px;">
+        </a>
+        <h4>Welcome! [[${session.user.FirstName}]]</h4>
+    </nav>
+
+    <ul class="navBar">
+        <div th:if="${session.user.FirstName != 'guest'}" >
+            <li style="float:right"><a class="active" href="/profile">Profile</a></li>
+            <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+        </div>
+        <div th:if="${session.user.FirstName == 'guest'}" >
+            <li style="float:right"><a class="active" href="/logout">Select again</a></li>
+        </div>
+    </ul>
+
+<!--Containers for each movie suggestion -->
+    <div class="container-fluid" id="result-container">
+    <div class="card-deck">
+        <div class="card" th:each="movie:${session.MovieArray}">
+            <img class="card-image-top" th:src="'https://image.tmdb.org/t/p/w1280' + ${movie.Poster_path}" alt="Image Path" width="100%"></img>
+            <div class="card-body">
+                <p class="card-text">Title: [[${movie.title}]]</p>
+                <p class="card-text">Year: [[${movie.year}]]</p>
+                <p class="card-text">Popularity: [[${movie.popularity}]]</p>
+                <p class="card-text">Description: [[${movie.description}]]</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
