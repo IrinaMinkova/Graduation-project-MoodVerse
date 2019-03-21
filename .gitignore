@@ -96,4 +96,7 @@ modules.xml
 # Ignore all local history of files
 .history
 
+.properties
+
 # End of https://www.gitignore.io/api/intellij+all,visualstudiocode
+
