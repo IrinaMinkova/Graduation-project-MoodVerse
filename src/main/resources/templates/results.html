@@ -16,61 +16,55 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
 
     <!--INTERNAL SCRIPTS & STYLES-->
-    <link href="../static/css/results.css" rel="stylesheet" th:href="@{/css/results.css}">
-
+    <link href="../static/css/home.css" rel="stylesheet" th:href="@{/css/home.css}">
 </head>
-
 <body>
-
 <!--NAVBAR-->
-    <nav class="navbar navbar-expand-md">
-        <a class="navbar-brand active" href="/">
+    <nav class="navbar">
+        <a class="navbar-brand active">
             <img src="leftBrainRightBrain.png" alt="Logo" style="height: 70px;">
         </a>
-        <h4>Welcome! [[${session.user.FirstName}]]</h4>
+        <p>[[${session.user.FirstName}]]</p>
+
+        <!--MEMBER-->
+        <div th:if="${session.user.FirstName != 'guest'}" >
+            <ul class="navbar nav">
+                <li class="navbar-item">
+                    <form action="/profile" method="POST">
+                        <li style="my-auto float:right"><input type="submit" class="profile" value="Profile" /></li>
+                    </form>
+                    <p><li style="float:right"><a class="nav-link active" href="/logout" >Logout</a></p></li>
+                    <p><li style="float:right"><a class="nav-link active" href="/home">Select Again</a></p></li>
+                </li>
+            </ul>
+        </div>
+
+        <!--GUEST-->
+        <div th:if="${session.user.FirstName == 'guest'}" >
+            <ul class="navbar nav">
+                <li class="navbar-item">
+                    <p><li style="float:right"><a class="nav-link active" href="/login">Login</a></p></li>
+                    <p><li style="float:right"><a class="nav-link active" href="/registration">SignUp</a></p></li>
+                    <p><li style="float:right"><a class="nav-link active" href="/home">Select Again</a></p></li>
+                </li>
+            </ul>
+        </div>
     </nav>
 
-    <ul class="navBar">
-        <div th:if="${session.user.FirstName != 'guest'}" >
-            <li style="float:right"><a class="active" href="/profile">Profile</a></li>
-            <li style="float:right"><a class="active" href="/logout">Logout</a></li>
-        </div>
-        <div th:if="${session.user.FirstName == 'guest'}" >
-            <li style="float:right"><a class="active" href="/logout">Close</a></li>
-        </div>
-        <li style="float:right"><a class="active" href="/home">Select Again</a></li>
-    </ul>
-
 <!--Containers for each movie suggestion -->
-<div >
     <div class="container-fluid" id="result-container">
-    <div class="card-deck">
-
-        <div class="card" th:each="movie:${session.MovieArray}">
-            <img class="card-image-top" th:src="'https://image.tmdb.org/t/p/w1280' + ${movie.Poster_path}" alt="Image Path" width="100%"></img>
-            <div class="card-body">
-                <p class="card-text">Title: [[${movie.title}]]</p>
-                <p class="card-text">Year: [[${movie.year}]]</p>
-                <p class="card-text">Popularity: [[${movie.popularity}]]</p>
-                <br>
-
-                <!--  You Tube Trailer Frame
-                <div class="iframe-container">   Try To figure out how to get you tube IDs for movies
-                    <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/0pdqf4P9MB8"
-                            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
+        <div class="card-deck">
+            <div class="card" th:each="movie:${session.MovieArray}">
+                <img class="card-image-top" th:src="'https://image.tmdb.org/t/p/w1280' + ${movie.Poster_path}" alt="Image Path" width="100%"></img>
+                <div class="card-body">
+                    <p class="card-text">Title: [[${movie.title}]]</p>
+                    <p class="card-text">Year: [[${movie.year}]]</p>
+                    <p class="card-text">Popularity: [[${movie.popularity}]]</p>
+                    <p class="card-text">Description: [[${movie.description}]]</p>
                 </div>
-                -->
-
-                <br>
-                <p class="card-text">Description: [[${movie.description}]]</p>
             </div>
-
         </div>
     </div>
-    </div>
-</div>
 
 </body>
 </html>

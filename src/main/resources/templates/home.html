@@ -9,7 +9,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="BrainToProv.css">
     <!--INTERNAL-->
     <link rel="stylesheet" type="text/css" media="screen" href="../static/css/registration.css"
           th:href="@{/css/registration.css}">
@@ -171,6 +170,70 @@
 });
 
 </script>
+
+    <!--GOOGLE FONT: ROBOTO-->
+    <!--<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+
+    <!--INTERNAL-->
+    <!--<link rel="stylesheet" type="text/css" media="screen" href="../static/css/home.css" th:href="@{/css/home.css}">
+    <script defer src="/js/home.js" th:href="@{/js/home.js}"></script>
+
+</head>
+<body>
+<!--NAVBAR-->
+    <!--<nav class="navbar">
+        <span class="navbar-brand active" onclick="openNav()">
+            <img src="leftBrainRightBrain.png" alt="Logo" style="height: 70px;">
+        </span>
+
+        <p>[[${session.user.FirstName}]]</p>
+
+        <!--MEMBER-->
+        <!--<div th:if="${session.user.FirstName != 'guest'}" >
+            <ul class="navbar nav">
+                <li class="navbar-item">
+                    <form action="/profile" method="POST">
+                        <li style="my-auto float:right"><input type="submit" class="profile" value="Profile" /></li>
+                    </form>
+                    <p><li style="float:right"><a class="nav-link active" href="/logout" >Logout</a></p></li>
+                </li>
+            </ul>
+        </div>
+
+        <!--
+        <form action="/profile" method="POST">
+            <li style="float:right"><input type="submit" value="profile" /></li>
+        </form>
+        -->
+
+        <!--GUEST-->
+       <!-- <div th:if="${session.user.FirstName == 'guest'}" >
+            <ul class="navbar nav">
+                <li class="navbar-item">
+                    <li style="float:right"><a class="nav-link active" href="/login">Login</a></li>
+                    <li style="float:right"><a class="nav-link active" href="/registration">SignUp</a></li>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+<!--Overlay-->
+    <!--<div id="myNav" class="overlay">
+        <div class="row w-100 mx-auto">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        </div>
+        <div class="overlay-content">
+            <div class="row mx-auto justify-content-center">
+                <img src="leftBrainRightBrain.png" alt="Logo" style="height: 200px;">
+            </div>
+            <div class="row mx-auto justify-content-center">
+                <h1>MoodVerse</h1>
+            </div>
+            <div class="row mx-auto justify-content-center">
+                <h2>Media recommendations based on the science of colors.</h2>
+            </div>
+        </div> <!--Content-->
+    <!--</div> <!--Overlay-->
 
 
 </body>
