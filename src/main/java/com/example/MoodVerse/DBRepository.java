@@ -159,7 +159,7 @@ public boolean checkEmail(String email){
              PreparedStatement ps = conn.prepareStatement("SELECT * " +
                      "FROM Genre " +
                      "Join Movie on Genre.GenreId = Movie.GenreId " +
-                     "Where Genre.Color = ?")) {
+                     "Where Genre.Color = ? ORDER BY NEWID()")) {
             ps.setString(1, color);
             ResultSet rs = ps.executeQuery();
 

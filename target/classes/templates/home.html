@@ -3,83 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Home Draft 2</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="..static/css/home.css" th:href="@{/css/home.css}">
+
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!--INTERNAL-->
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/registration.css" th:href="@{/css/registration.css}">
+    <script src="main.js"></script>
 
 </head>
 <body>
-<!--Navigation bar, Logo and footer-->
-<nav>
-    <div>
-        <ul class="top">
-            <a href="/login">
-                <li><img src="just_Brain.png" alt="Logo" style="width:5%;height:5%;">
-                    <h1 class="MoodVerse">
-                        <span>M</span><span>o</span><span>o</span><span>d</span><span>V</span><span>e</span><span>r</span><span>s</span><span>e</span>
-                    </h1>
-                    <h1 th:text="${session.user.FirstName}"></h1>
-                </li>
-            </a>
-        </ul>
-        <ul class="navBar">
-            <!--
-            <li style="float:right"><p th:if="${session.user.FirstName = guest}"  class="active" >Results Guest</p></li>
-            -->
-            <div th:if="${session.user.FirstName != 'guest'}" >
-            <li style="float:right"><a   href="/profile" >Profile</a></li>
-            <li style="float:right"><a   href="/logout" >Logout</a></li>
-            </div>
-            <li style="float:right"><a class="active" href="/About">About</a></li>
+<!--NAVBAR-->
+    <nav class="navbar navbar-expand-md">
+        <a class="navbar-brand active" href="/">
+            <img src="leftBrainRightBrain.png" alt="Logo" style="height: 70px;">
+        </a>
+        <p>[[${session.user.FirstName}]]</p>
+    </nav>
+
+    <ul class="navBar">
+    <!--
+    <li style="float:right"><p th:if="${session.user.FirstName = guest}"  class="active" >Results Guest</p></li>
+    -->
+
+<p></p>
+
+    <div th:if="${session.user.FirstName != 'guest'}" >
 
 
-        </ul>
+        <p><a href="/profile" >Profile</a></p>
+        <p><a href="/logout" >Logout</a></p>
     </div>
-</nav>
-
-
-<form action="/home" method="POST">
-    <div class="container-fluid">
-
-        <div class="bgPulse">
-<span>
-<button type="submit" name="color" value="red" id="button1"></button>
-</span>
-            <span>
-<button type="submit" name="color" value="orange" id="button2"></button>
-</span>
-            <span>
-<button type="submit" name="color" value="yellow" id="button3"></button>
-</span>
-            <span>
-<button type="submit" name="color" value="bright_green" id="button4"></button>
-</span>
-            <span>
-<button type="submit" name="color" value="dark_green" id="button5"></button>
-</span>
-            <span>
-<button type="submit" name="color" value="sky_blue" id="button6"></button>
-</span>
-            <span>
-<button type="submit" name="color" value="blue" id="button7"></button>
-</span>
-            <span>
-<button type="submit" name="color" value="purple" id="button8"></button>
-</span>
+        <div th:if="${session.user.FirstName == 'guest'}" >
+            <li style="float:right"><a class="active" href="/login">Login</a></li>
+            <li style="float:right"><a class="active" href="/registration">SignUp</a></li>
+            <li style="float:right"><a class="active" href="/logout">Close</a></li>
         </div>
-    </div>
+    </ul>
 
-</form>
-
-<div class="bottom">
-    <p> © Junaid, Shubham, Irina, Joy</p>
-</div>
-
-</body>
-</html>
-
+    <form action="home" method="POST">
+        <div class="container-fluid">
+            <div class="bgPulse">
+                <span><button type="submit" name="color" value="red" id="button1">red</button></span>
+                <span><button type="submit" name="color" value="orange" id="button2">orange</button></span>
+                <span><button type="submit" name="color" value="yellow" id="button3">yellow</button></span>
+                <span><button type="submit" name="color" value="bright_green" id="button4">bright_green</button></span>
+                <span><button type="submit" name="color" value="dark_green" id="button5">dark_green</button></span>
+                <span><button type="submit" name="color" value="sky_blue" id="button6">sky_blue</button></span>
+                <span><button type="submit" name="color" value="blue" id="button7">blue</button></span>
+                <span><button type="submit" name="color" value="purple" id="button8">purple</button></span>
+            </div>
+        </div>
+    </form>
 
 </body>
 </html>

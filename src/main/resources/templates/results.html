@@ -17,6 +17,7 @@
 
     <!--INTERNAL SCRIPTS & STYLES-->
     <link href="../static/css/results.css" rel="stylesheet" th:href="@{/css/results.css}">
+
 </head>
 
 <body>
@@ -35,22 +36,39 @@
             <li style="float:right"><a class="active" href="/logout">Logout</a></li>
         </div>
         <div th:if="${session.user.FirstName == 'guest'}" >
-            <li style="float:right"><a class="active" href="/logout">Select again</a></li>
+            <li style="float:right"><a class="active" href="/logout">Close</a></li>
         </div>
+        <li style="float:right"><a class="active" href="/home">Select Again</a></li>
     </ul>
 
 <!--Containers for each movie suggestion -->
+<div >
     <div class="container-fluid" id="result-container">
     <div class="card-deck">
+
         <div class="card" th:each="movie:${session.MovieArray}">
             <img class="card-image-top" th:src="'https://image.tmdb.org/t/p/w1280' + ${movie.Poster_path}" alt="Image Path" width="100%"></img>
             <div class="card-body">
                 <p class="card-text">Title: [[${movie.title}]]</p>
                 <p class="card-text">Year: [[${movie.year}]]</p>
                 <p class="card-text">Popularity: [[${movie.popularity}]]</p>
+                <br>
+
+                <!--  You Tube Trailer Frame
+                <div class="iframe-container">   Try To figure out how to get you tube IDs for movies
+                    <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/0pdqf4P9MB8"
+                            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                </div>
+                -->
+
+                <br>
                 <p class="card-text">Description: [[${movie.description}]]</p>
             </div>
+
         </div>
+    </div>
     </div>
 </div>
 

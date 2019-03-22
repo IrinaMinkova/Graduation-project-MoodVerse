@@ -2,94 +2,75 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:font-family="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link th:href="@{/css/Profile.css}" rel="stylesheet">
-    <link href="../static/css/Profile.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <title>PROFILE</title>
 
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!--EXTERNAL STYLES-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+
+    <!--INTERNAL SCRIPTS & STYLES-->
+    <link href="../static/css/results.css" rel="stylesheet" th:href="@{/css/results.css}">
+    <link href="../static/css/registration.css" rel="stylesheet" th:href="@{/css/registration.css}">
+    <script src="main.js"></script>
 </head>
 
-<div>
-<!--Navigation bar, Logo and footer-->
-<nav>
-    <div>
-        <ul class="top">
-            <a class="active" href="/login">
-                <li><img src="just_Brain.png" alt="Logo" style="width:5%;height:5%;">
-                    <h1 class="MoodVerse">
-                        <span>M</span><span>o</span><span>o</span><span>d</span><span>V</span><span>e</span><span>r</span><span>s</span><span>e</span>
-                    </h1>
-                </li>
-            </a>
-        </ul>
-        <ul class="navBar">
+<!--NAVBAR-->
+    <nav class="navbar navbar-expand-md">
+        <a class="navbar-brand active" href="/">
+            <img src="leftBrainRightBrain.png" alt="Logo" style="height: 70px;">
+        </a>
+    </nav>
 
-            <li style="float:right"><a class="active" href="/About">About</a></li>
-            <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+    <ul class="navBar">
+        <li style="float:right"><a class="active" href="/home">Select Again</a></li>
+        <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+    </ul>
 
-        </ul>
-    </div>
-</nav>
-
-
-<!--Containers for each movie suggestion-->
-<div>
-    <section>
-        <div class="container portfolio">
-            <div class="bio-content">
-                <p></p>
-            </div>
-
-            <div  class="bio-content2">
-                <h1 th:text="${session.user.FirstName}"></h1>
-                <h4>My Mood History:</h4><br>
-                    <form action="/profile" method="POST">
-                    <input type="submit"  value="Check Mood History"></input>
-                    </form>
-                <br>
-
-                    <div  th:each="key: ${moodHistory.keySet()}">
-                    <p><span th:text="${key}"></span> :
-                    <span th:text="${moodHistory.get(key)}"></span></p>
+<!--MOOD HISTORY-->
+    <div class="container-fluid h-100 w-100">
+        <div class="row">
+            <div class="col">
+                <div class="container portfolio">
+                    <div class="bio-content">
+                        <p></p>
                     </div>
-
-                </div>
-
-                <p></p>
+                    <div class="bio-content2">
+                        <h1 th:text="${session.user.FirstName}"></h1>
+                        <h4>Your Mood History:</h4><br>
+                        <form action="/profile" method="POST">
+                        <input type="submit"  value="Check Mood History"></input>
+                        </form>
+                    </div>
+                        <br>
+                    <div  th:each="key: ${moodHistory.keySet()}">
+                        <p><span th:text="${key}"></span> :
+                        <span th:text="${moodHistory.get(key)}"></span></p>
+                    </div>
+                 </div>
             </div>
-
-            <br>
-        </section>
+            <div class="col">
+                <div id="login-box">
+                    <div class="left">
+                        <h1>Delete account</h1>
+                        <br>
+                        <form role="form" action="/deleteAccount" method="POST">
+                            <div>
+                                <!--input type="submit" name="email" th:value="${session.user.email}" />-->
+                                <!-- If this is used button will not display user email -->
+                                <input type="text" name="email" value="Email" />
+                                <input type="submit" name="email" value="Confirm" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <br>
-        <br>
-
-
-
-            <form role="form" action="/deleteAccount" method="POST">
-                <div>
-                <!--input type="submit" name="email" th:value="${session.user.email}" />-->
-                <!-- If this is used button will not display user email -->
-                    <input type="text" name="email" value="Email" />
-                    <input type="submit" name="email" value="Delete Account" />
-
-        </div>
-            </form>
-    </section>
-
-</div>
-
-
-<br>
-<br>
-<p></p>
-<div class="bottom">
-    <p> © Junaid, Shubham, Irina, Joy</p>
-</div>
 </body>
-
 </html>

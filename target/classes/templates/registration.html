@@ -6,75 +6,50 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>S I G N U P</title>
+    <title>SIGNUP</title>
 
-    <!--SCRIPTS for boxes-->
-
-    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/registration.css" th:href="@{/css/registration.css}">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/registration.css"
-          th:href="@{/css/registration.css}">
-    <script src="main.js"></script>
-
-    <!--SCRIPTS for navBar-->
-    <!-- Latest compiled and minified CSS -->
+    <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+    <!--INTERNAL-->
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/registration.css" th:href="@{/css/registration.css}">
+    <script src="main.js"></script>
 </head>
 
 <body>
 
-<nav>
-    <div>
-        <ul class="top2">
-            <a class="active" href="/login">
-                <li><img src="just_Brain.png" alt="Logo" style="width:5%;height:5%;">
-                    <h1 class="MoodVerse">
-                        <span>M</span><span>o</span><span>o</span><span>d</span><span>V</span><span>e</span><span>r</span><span>s</span><span>e</span>
-                    </h1>
-                </li>
-            </a>
-        </ul>
-        <ul class="navBar">
-            <li style="float:right"><a class="active" href="/Profile">Profile</a></li>
-            <li style="float:right"><a class="active" href="/About">About</a></li>
-        </ul>
-    </div>
-</nav>
+<!--NAVBAR-->
+    <nav class="navbar navbar-expand-md">
+        <a class="navbar-brand active" href="/">
+            <img src="leftBrainRightBrain.png" alt="Logo" style="height: 70px;">
+        </a>
+    </nav>
 
-<div class="container">
-    <div id="login-box">
-        <div class="left">
+<!--REGISTRATION-->
+    <div class="container">
+        <div id="login-box">
+            <div class="left">
+              <h1>Sign up</h1>
+                <br>
 
-          <h1>Sign up</h1>
-            <br>
-          <form action="/registration" method="POST" th:object="${user}">
+              <form action="/registration" method="POST" th:object="${user}">
+                  <p th:if="${#fields.hasErrors('firstName')}">Incorrect First Name!</p>
+                  <input type="text" th:field="*{firstName}" placeholder="FirstName" />
+                  <p th:if="${#fields.hasErrors('lastName')}">Incorrect Last Name!</p>
+                  <input type="text" th:field="*{lastName}" placeholder="LastName" />
+                  <p th:if="${#fields.hasErrors('email')}">Incorrect Email!</p>
+                  <input type="text" th:field="*{email}"  placeholder="E-mail" />
+                  <p th:if="${#fields.hasErrors('password')}">Incorrect Password!</p>
+                  <input type="password" th:field="*{password}" placeholder="Password" />
+                  <input type="submit" name="signup_submit" value="Sign me up" action="/registration" method="post"/>
+              </form>
 
-              <p th:if="${#fields.hasErrors('firstName')}">Incorrect First Name!</p>
-              <input type="text" th:field="*{firstName}" placeholder="FirstName" />
-              <p th:if="${#fields.hasErrors('lastName')}">Incorrect Last Name!</p>
-              <input type="text" th:field="*{lastName}" placeholder="LastName" />
-              <p th:if="${#fields.hasErrors('email')}">Incorrect Email!</p>
-              <input type="text" th:field="*{email}"  placeholder="E-mail" />
-              <p th:if="${#fields.hasErrors('password')}">Incorrect Password!</p>
-              <input type="password" th:field="*{password}" placeholder="Password" />
-
-              <input type="submit" name="signup_submit" value="Sign me up" action="/registration" method="post"/>
-          </form>
+            </div>
         </div>
     </div>
-</div>
 
-
-<p></p>
-<div class="bottom">
-    <p> © Junaid, Shubham, Irina, Joy</p>
-</div>
 </body>
 </html>

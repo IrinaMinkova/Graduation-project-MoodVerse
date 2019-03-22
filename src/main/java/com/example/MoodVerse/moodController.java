@@ -25,10 +25,17 @@ public class moodController {
     @GetMapping("/")
     public String loginUser(HttpSession session){
        //initate a guest user.
+        User intialUser = new User("guest", "guest", "guest@guest.com", "123456");
+       session.setAttribute("user", intialUser);
+        return "home";
+    }
+
+    @GetMapping ("/login")
+    public String login(){
         return "login";
     }
 
-    @PostMapping("/")
+    @PostMapping("/login")
     public String verifyUser(HttpSession session, @RequestParam String email, @RequestParam String password){
         User inUser = new User(email,password);
         System.out.println("In post "+inUser.getEmail()+" "+inUser.getPassword());
@@ -43,7 +50,7 @@ public class moodController {
         // here we can put an else if condition if new guest HTMLs are there
 
        else {
-            System.out.println("either guest or member !");
+            System.out.println(" member ! *****" + CurrentUser.getFirstName());
             session.setAttribute("user",CurrentUser); // add Guest user to the session by default
             return "home";
         }
@@ -54,10 +61,7 @@ public class moodController {
 
     @GetMapping("/home")
     public String startSession(){
-          // User user = new User();
-           //model.addAttribute()
-        //System.out.println(user);
-         // session.setAttribute("users", user);
+
         return "home";
     }
 
@@ -199,7 +203,7 @@ model.addAttribute("moodHistory", moodHistory);
     @PostMapping("/passwordReset")
     public String ChangeUserPassword(HttpSession session, @RequestParam String newPassword, @RequestParam String email ){
         repository.updateUserPassword(newPassword, email);
-        return "login";
+        return "redirect:/login";
     }
 
 // Delete User

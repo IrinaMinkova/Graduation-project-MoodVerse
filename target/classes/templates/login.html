@@ -6,81 +6,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>L O G I N</title>
+    <title>LOGIN</title>
 
-    <!--SCRIPTS for boxes-->
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!--INTERNAL-->
     <link rel="stylesheet" type="text/css" media="screen" href="../static/css/registration.css" th:href="@{/css/registration.css}">
     <script src="main.js"></script>
-
-    <!--SCRIPTS for navBar-->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link th:href="@{/css/registration.css}" rel="stylesheet">
-    <link href="../static/css/registration.css" rel="stylesheet">
-
 </head>
-
 <body>
-<nav>
-    <div>
-        <ul class="top">
-            <a class="active" href="/">
-                <li><img src="just_Brain.png" alt="Logo" style="width:5%;height:5%;">
-                    <h1 class="MoodVerse">
-                        <span>M</span><span>o</span><span>o</span><span>d</span><span>V</span><span>e</span><span>r</span><span>s</span><span>e</span>
-                    </h1>
-                </li>
-            </a>
-        </ul>
-        <ul class="navBar">
-            <li style="float:right"><a class="active" href="/Registration">Sign Up</a></li>
-            <li style="float:right"><a class="active" href="/About">About</a></li>
-        </ul>
-    </div>
 
-</nav>
+<!--NAVBAR-->
+    <nav class="navbar navbar-expand-md">
+        <a class="navbar-brand active" href="/">
+            <img src="leftBrainRightBrain.png" alt="Logo" style="height: 70px;">
+        </a>
+    </nav>
 
-<div class="container">
-    <div id="login-box">
-        <div class="left">
-            <h1>Log in</h1>
-            <br>
-            <div>
-            <form action="/" method="POST" role = "form">
-                <input type="text" name = "email"  placeholder="E-mail" value = "email"/>
-                <input type="password" name = "password" placeholder="Password" value = "password" />
-                <input type="submit" name="login_submit" value="Log in" action="/home" method="POST"/>
-            </form>
-                <form accept-charset="UTF-8" role="form" action = "/" method ="POST">
-
-                    <input type="hidden" name="email" value="guest@guest.com">
-                    <input type="hidden" name="password" value="123456">
-                    <input class="btn btn-lg btn-success btn-block" type="submit" value="Continue as guest">
-                </form>
-
-                <a type="submit" name="registration" href="/registration">Sign Up</a>
-
+<!--LOGIN-->
+    <div class="container">
+        <div id="login-box">
+            <div class="left">
+                <h1>Log in</h1>
                 <br>
-                <a type="submit" name="forgotPassword" href="/passwordReset">Forgot Password</a>
+                <div>
 
-                <br>
+                    <form action="/login" method="POST" role = "form">
+                        <input type="text" name = "email"  placeholder="E-mail" value = "email"/>
+                        <input type="password" name = "password" placeholder="Password" value = "password" />
+                        <input type="submit" name="login_submit" value="Log in" action="/home" method="POST"/>
+                    </form>
+                    <br>
+                    <br>
+                    <p><a href="/passwordReset">Forgot Password</a></p>
+<!--
+                    <form accept-charset="UTF-8" role="form" action = "/" method ="POST">
+                        <input type="hidden" name="email" value="guest@guest.com">
+                        <input type="hidden" name="password" value="123456">
+                        <input class="btn btn-lg btn-success btn-block" type="submit" value="Continue as guest">
+                    </form>
+
+                    <p><a href="/registration">Sign Up</a></p>
+-->
+
+                </div>
             </div>
         </div>
     </div>
-</div>
-<p></p>
-<div class="bottom">
-    <p> © Junaid, Shubham, Irina, Joy</p>
-</div>
+
 </body>
 </html>
 

@@ -35,11 +35,15 @@
                 <br>
                 <div>
 
-                    <form action="/" method="POST" role = "form">
+                    <form action="/login" method="POST" role = "form">
                         <input type="text" name = "email"  placeholder="E-mail" value = "email"/>
                         <input type="password" name = "password" placeholder="Password" value = "password" />
                         <input type="submit" name="login_submit" value="Log in" action="/home" method="POST"/>
                     </form>
+                    <br>
+                    <br>
+                    <p><a href="/passwordReset">Forgot Password</a></p>
+<!--
                     <form accept-charset="UTF-8" role="form" action = "/" method ="POST">
                         <input type="hidden" name="email" value="guest@guest.com">
                         <input type="hidden" name="password" value="123456">
@@ -47,7 +51,8 @@
                     </form>
 
                     <p><a href="/registration">Sign Up</a></p>
-                    <p><a href="/passwordReset">Forgot Password</a></p>
+-->
+
                 </div>
             </div>
         </div>

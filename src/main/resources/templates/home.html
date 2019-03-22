@@ -21,29 +21,40 @@
         <a class="navbar-brand active" href="/">
             <img src="leftBrainRightBrain.png" alt="Logo" style="height: 70px;">
         </a>
+        <p>[[${session.user.FirstName}]]</p>
     </nav>
 
     <ul class="navBar">
     <!--
     <li style="float:right"><p th:if="${session.user.FirstName = guest}"  class="active" >Results Guest</p></li>
     -->
+
+<p></p>
+
     <div th:if="${session.user.FirstName != 'guest'}" >
-        <li style="float:right"><a   href="/profile" >Profile</a></li>
-        <li style="float:right"><a   href="/logout" >Logout</a></li>
+
+
+        <p><a href="/profile" >Profile</a></p>
+        <p><a href="/logout" >Logout</a></p>
     </div>
+        <div th:if="${session.user.FirstName == 'guest'}" >
+            <li style="float:right"><a class="active" href="/login">Login</a></li>
+            <li style="float:right"><a class="active" href="/registration">SignUp</a></li>
+            <li style="float:right"><a class="active" href="/logout">Close</a></li>
+        </div>
     </ul>
 
     <form action="home" method="POST">
         <div class="container-fluid">
             <div class="bgPulse">
-                <span><button type="submit" name="color" value="red" id="button1"></button></span>
-                <span><button type="submit" name="color" value="orange" id="button2"></button></span>
-                <span><button type="submit" name="color" value="yellow" id="button3"></button></span>
-                <span><button type="submit" name="color" value="bright_green" id="button4"></button></span>
-                <span><button type="submit" name="color" value="dark_green" id="button5"></button></span>
-                <span><button type="submit" name="color" value="sky_blue" id="button6"></button></span>
-                <span><button type="submit" name="color" value="blue" id="button7"></button></span>
-                <span><button type="submit" name="color" value="purple" id="button8"></button></span>
+                <span><button type="submit" name="color" value="red" id="button1">red</button></span>
+                <span><button type="submit" name="color" value="orange" id="button2">orange</button></span>
+                <span><button type="submit" name="color" value="yellow" id="button3">yellow</button></span>
+                <span><button type="submit" name="color" value="bright_green" id="button4">bright_green</button></span>
+                <span><button type="submit" name="color" value="dark_green" id="button5">dark_green</button></span>
+                <span><button type="submit" name="color" value="sky_blue" id="button6">sky_blue</button></span>
+                <span><button type="submit" name="color" value="blue" id="button7">blue</button></span>
+                <span><button type="submit" name="color" value="purple" id="button8">purple</button></span>
             </div>
         </div>
     </form>
