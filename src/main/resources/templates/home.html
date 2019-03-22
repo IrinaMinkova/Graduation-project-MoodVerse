@@ -10,54 +10,71 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+    <!--GOOGLE FONT: ROBOTO-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+
     <!--INTERNAL-->
-    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/registration.css" th:href="@{/css/registration.css}">
-    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/home.css" th:href="@{/css/home.css}">
+    <script defer src="/js/home.js" th:href="@{/js/home.js}"></script>
 
 </head>
 <body>
 <!--NAVBAR-->
-    <nav class="navbar navbar-expand-md">
-        <a class="navbar-brand active" href="/">
+    <nav class="navbar">
+        <span class="navbar-brand active" onclick="openNav()">
             <img src="leftBrainRightBrain.png" alt="Logo" style="height: 70px;">
-        </a>
+        </span>
+
         <p>[[${session.user.FirstName}]]</p>
+
+        <!--MEMBER-->
+        <div th:if="${session.user.FirstName != 'guest'}" >
+            <ul class="navbar nav">
+                <li class="navbar-item">
+                    <form action="/profile" method="POST">
+                        <li style="my-auto float:right"><input type="submit" class="profile" value="Profile" /></li>
+                    </form>
+                    <p><li style="float:right"><a class="nav-link active" href="/logout" >Logout</a></p></li>
+                </li>
+            </ul>
+        </div>
+
+        <!--
+        <form action="/profile" method="POST">
+            <li style="float:right"><input type="submit" value="profile" /></li>
+        </form>
+        -->
+
+        <!--GUEST-->
+        <div th:if="${session.user.FirstName == 'guest'}" >
+            <ul class="navbar nav">
+                <li class="navbar-item">
+                    <li style="float:right"><a class="nav-link active" href="/login">Login</a></li>
+                    <li style="float:right"><a class="nav-link active" href="/registration">SignUp</a></li>
+                </li>
+            </ul>
+        </div>
     </nav>
 
-    <ul class="navBar">
-    <!--
-    <li style="float:right"><p th:if="${session.user.FirstName = guest}"  class="active" >Results Guest</p></li>
-    -->
-
-<p></p>
-
-    <div th:if="${session.user.FirstName != 'guest'}" >
-
-
-        <p><a href="/profile" >Profile</a></p>
-        <p><a href="/logout" >Logout</a></p>
-    </div>
-        <div th:if="${session.user.FirstName == 'guest'}" >
-            <li style="float:right"><a class="active" href="/login">Login</a></li>
-            <li style="float:right"><a class="active" href="/registration">SignUp</a></li>
-            <li style="float:right"><a class="active" href="/logout">Close</a></li>
+<!--Overlay-->
+    <div id="myNav" class="overlay">
+        <div class="row w-100 mx-auto">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         </div>
-    </ul>
-
-    <form action="home" method="POST">
-        <div class="container-fluid">
-            <div class="bgPulse">
-                <span><button type="submit" name="color" value="red" id="button1">red</button></span>
-                <span><button type="submit" name="color" value="orange" id="button2">orange</button></span>
-                <span><button type="submit" name="color" value="yellow" id="button3">yellow</button></span>
-                <span><button type="submit" name="color" value="bright_green" id="button4">bright_green</button></span>
-                <span><button type="submit" name="color" value="dark_green" id="button5">dark_green</button></span>
-                <span><button type="submit" name="color" value="sky_blue" id="button6">sky_blue</button></span>
-                <span><button type="submit" name="color" value="blue" id="button7">blue</button></span>
-                <span><button type="submit" name="color" value="purple" id="button8">purple</button></span>
+        <div class="overlay-content">
+            <div class="row mx-auto justify-content-center">
+                <img src="leftBrainRightBrain.png" alt="Logo" style="height: 200px;">
             </div>
-        </div>
-    </form>
+            <div class="row mx-auto justify-content-center">
+                <h1>MoodVerse</h1>
+            </div>
+            <div class="row mx-auto justify-content-center">
+                <h2>Media recommendations based on the science of colors.</h2>
+            </div>
+        </div> <!--Content-->
+    </div> <!--Overlay-->
+
+
 
 </body>
 </html>

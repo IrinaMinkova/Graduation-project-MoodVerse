@@ -1,182 +1,61 @@
 body{
-background-color:#f3f3f3 !important;}
-
-.top {
-   font-size: 23px;
-    width: 100% !important;
-    background-color:#000000;
-    color: white;
-}
-.MoodVerse{font-family:'Arial' !important;}
-.MoodVerse span:nth-child(1) {color: #30a6c5;}
-.MoodVerse span:nth-child(2) {color: #E33B21;}
-.MoodVerse span:nth-child(3) {color: #E6B500;}
-.MoodVerse span:nth-child(4) {color: #4BCE54;}
-.MoodVerse span:nth-child(5) {color: #30a6c5;}
-.MoodVerse span:nth-child(6) {color: #E33B21; font-style: italic;}
-.MoodVerse span:nth-child(7) {color: #E6B500; font-style: italic;}
-.MoodVerse span:nth-child(8) {color: #4BCE54; font-style: italic;}
-.MoodVerse span:nth-child(9) {color: #ca214b;font-style: italic;}
-
-
-img {
-      float: left !important;
-    }
-
-ul {
-font-family:'Montserrat';
-font-size: 22px;
-z-index: 1;
-list-style-type: none;
-margin: 0;
-padding: 0;
-overflow: hidden;
-background-color: #000000;
-position: -webkit-sticky; /* Safari */
-position: sticky;
-top: 0;
+    background-color:#f3f2f3;
+    font-family: 'Roboto', sans-serif;
 }
 
-li .active {
-display: block;
-color: white;
-text-align: center;
-padding: 14px 16px;
-text-decoration: none;
+h1 {
+  margin: 0 0 20px 0;
+  font-weight: 300;
+  font-size: 28px;
 }
 
-li active:hover {
-background-color: #d3d3d3;
+.profile {
+    background: none;
+    border-style: none;
+    color: #007bff;
 }
 
-.bottom {
-        font-family:'Montserrat';
-        font-size: 18px;
-        position:fixed;
+/* Overlay */
+
+    .overlay {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 2;
+        top: 0;
         left: 0;
-        bottom: 0;
+        background-color: rgb(191,192,191);
+        background-color: rgba(191,192,191, 0.8);
+        overflow-x: hidden;
+        transition: 0.5s;
+      }
+
+      .overlay-content {
+        position: relative;
+        top: 25%;
+        margin-top: 5px;
+        height: 100%;
         width: 100%;
-        background-color:#000000;
-        color: white;
         text-align: center;
-        z-index: 1;
-    }
+      }
 
-.bgPulse {
-width: 50%;
-height: 50%;
-}
-.bgPulse span {
-position: absolute;
-width: 200px;
-height: 200px;
-border-radius: 50px;
-background: white;
-}
+    /* This is the 'X' */
+      .overlay a {
+        padding: 8px;
+        text-decoration: none;
+        font-size: 36px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+      }
 
-#button1 {
-width: 200px;
-height: 200px;
-border-radius: 50px;
-background-color: red;
-}
-#button2 {
-width: 200px;
-height: 200px;
-border-radius: 50px;
-background-color: orangered;
-}
-#button3 {
-width: 300px;
-height: 300px;
-border-radius: 50px;
-background-color: yellow;
-}
-#button4 {
-width: 200px;
-height: 200px;
-border-radius: 50px;
-background-color: rgb(36, 241, 36);
-}
-#button5 {
-width: 200px;
-height: 200px;
-border-radius: 50px;
-background-color: rgb(1, 59, 1);
-}
-#button6 {
-width: 200px;
-height: 200px;
-border-radius: 50px;
-background-color: skyblue;
-}
-#button7 {
-width: 300px;
-height: 300px;
-border-radius: 50px;
-background-color: blue;
-}
-#button8 {
-width: 200px;
-height: 200px;
-border-radius: 50px;
-background-color: purple;
-}
-.bgPulse span:nth-child(3n+1) {
-background: transparent;
-border: 5px solid #fff;
-}
+      .overlay a:hover, .overlay a:focus {
+        color: #f1f1f1;
+      }
 
-.bgPulse span:nth-child(1) {
-top: 50%;
-left: 20%;
-animation: animate 10s linear infinite;
-}
-
-.bgPulse span:nth-child(2) {
-top: 80%;
-left: 40%;
-animation: animate 12s linear infinite;
-}
-.bgPulse span:nth-child(3) {
-top: 10%;
-left: 65%;
-animation: animate 15s linear infinite;
-}
-.bgPulse span:nth-child(4) {
-top: 50%;
-left: 70%;
-animation: animate 6s linear infinite;
-}
-.bgPulse span:nth-child(5) {
-top: 10%;
-left: 30%;
-animation: animate 9s linear infinite;
-}
-.bgPulse span:nth-child(6) {
-top: 90%;
-left: 95%;
-animation: animate 8s linear infinite;
-}
-.bgPulse span:nth-child(7) {
-top: 80%;
-left: 5%;
-animation: animate 5s linear infinite;
-}
-.bgPulse span:nth-child(8) {
-top: 35%;
-left: 50%;
-animation: animate 14s linear infinite;
-}
-
-
-@keyframes animate {
-0% {
-transform: scale(0) translateY(0) rotate(0deg);
-opacity: 7;
-}
-100% {
-transform: scale(1) translateY(-200px) rotate(360deg);
-opacity: .5;
-}
-
+      .overlay .closebtn {
+        position: absolute;
+        top: 0px;
+        left: 5px;
+        font-size: 60px;
+      }

@@ -216,7 +216,7 @@ model.addAttribute("moodHistory", moodHistory);
        email = userData.getEmail(); //if to use this method then button in html will not display user email
         repository.deleteUser(email);
         session.invalidate();
-        return "login";
+        return "redirect:/";
     }
 
 
