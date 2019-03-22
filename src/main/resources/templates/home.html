@@ -1,63 +1,178 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Home Draft 2</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="iFrame message passing test">
+    <meta name="viewport" content="width=device-width">
 
-    <!--BOOTSTRAP-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="BrainToProv.css">
     <!--INTERNAL-->
-    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/registration.css" th:href="@{/css/registration.css}">
-    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/registration.css"
+          th:href="@{/css/registration.css}">
 
 </head>
 <body>
-<!--NAVBAR-->
-    <nav class="navbar navbar-expand-md">
-        <a class="navbar-brand active" href="/">
-            <img src="leftBrainRightBrain.png" alt="Logo" style="height: 70px;">
-        </a>
-        <p>[[${session.user.FirstName}]]</p>
-    </nav>
-
-    <ul class="navBar">
-    <!--
-    <li style="float:right"><p th:if="${session.user.FirstName = guest}"  class="active" >Results Guest</p></li>
-    -->
-
-<p></p>
-
-    <div th:if="${session.user.FirstName != 'guest'}" >
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
-        <p><a href="/profile" >Profile</a></p>
-        <p><a href="/logout" >Logout</a></p>
-    </div>
-        <div th:if="${session.user.FirstName == 'guest'}" >
-            <li style="float:right"><a class="active" href="/login">Login</a></li>
-            <li style="float:right"><a class="active" href="/registration">SignUp</a></li>
-            <li style="float:right"><a class="active" href="/logout">Close</a></li>
+<div class="container">
+
+    <!--Navigation Bar-->
+    <!--<div class="row navbar navbar-expand-md">
+        <div class="col-md-3">
+            <a class="navbar-brand active" href="/">
+                <img src="leftBrainRightBrain.png" alt="Logo" style="height: 70px;">
+            </a>
+            <p>[[${session.user.FirstName}]]</p>
         </div>
-    </ul>
 
-    <form action="home" method="POST">
-        <div class="container-fluid">
-            <div class="bgPulse">
-                <span><button type="submit" name="color" value="red" id="button1">red</button></span>
-                <span><button type="submit" name="color" value="orange" id="button2">orange</button></span>
-                <span><button type="submit" name="color" value="yellow" id="button3">yellow</button></span>
-                <span><button type="submit" name="color" value="bright_green" id="button4">bright_green</button></span>
-                <span><button type="submit" name="color" value="dark_green" id="button5">dark_green</button></span>
-                <span><button type="submit" name="color" value="sky_blue" id="button6">sky_blue</button></span>
-                <span><button type="submit" name="color" value="blue" id="button7">blue</button></span>
-                <span><button type="submit" name="color" value="purple" id="button8">purple</button></span>
+        <div class="col-md-1">
+            <div><a href="/logout" >Logout</a></div>
+        </div>
+
+        <div class="col-md-1">
+            <div><a href="/profile" >Profile</a></div>
+        </div>
+        <div class="col-md-4"></div>
+
+        <div class="col-md-1">
+            <div style="float:right"><a class="active" href="/login">Login</a></div>
+        </div>
+
+        <div class="col-md-1">
+            <div style="float:right"><a class="active" href="/registration">SignUp</a></div>
+        </div>
+
+        <div class="col-md-1">
+            <div style="float:right"><a class="active" href="/logout">Close</a></div>
+        </div>
+
+    </div>-->
+
+
+    <p></p>
+
+    <!--Brain-->
+    <div class="row text-center">
+        <div class="col-md-12">
+            <div class="col d-flex align-items-center justify-content-center">
+
+                <img src="Brain765x676.png" class="rounded" border="0" width="73%" usemap="#image-map">
+
+                <map name="image-map">
+
+                    <area target="" style="outline:none;" alt="Red" title="Red" href="/home1?color=red"
+                          coords="401,112,393,150,449,101" shape="poly" id="red">
+
+                    <area target="" style="outline:none;" alt="Red" title="Red" href="/home1?color=red"
+                          coords="451,168,471,143,519,154"
+                          shape="poly">
+                    <area target="" style="outline:none;" alt="Red" title="Red" href="/home1?color=red"
+                          coords="395,150,450,168,454,99"
+                          shape="poly">
+                    <area target="" style="outline:none;" alt="Red" title="Red" href="/home1?color=red"
+                          coords="452,168,435,241,517,218"
+                          shape="poly">
+                    <area target="" style="outline:none;" alt="Orange" title="Orange" href="/home1?color=orange"
+                          coords="392,151,385,222,449,169" shape="poly">
+                    <area target="" style="outline:none;" alt="Orange" title="Orange" href="/home1?color=orange"
+                          coords="455,101,452,166,470,142" shape="poly">
+                    <area target="" style="outline:none;" alt="Orange" title="Orange" href="/home1?color=orange"
+                          coords="455,98,497,109,471,141" shape="poly">
+                    <area target="" style="outline:none;" alt="Yellow" title="Yellow" href="/home1?color=yellow"
+                          coords="497,111,469,142,520,153" shape="poly">
+                    <area target="" style="outline:none;" alt="Yellow" title="Yellow" href="/home1?color=yellow"
+                          coords="455,169,520,155,516,215" shape="poly">
+                    <area target="" style="outline:none;" alt="Yellow" title="Yellow" href="/home1?color=yellow"
+                          coords="387,221,452,168,433,241" shape="poly">
+                    <area target="" style="outline:none;" alt="Yellow" title="Yellow" href="/home1?color=yellow"
+                          coords="437,242,539,295,517,218" shape="poly">
+                    <area target="" style="outline:none;" alt="Orange" title="Orange" href="/home1?color=orange"
+                          coords="518,219,580,255,539,292" shape="poly">
+                    <area target="" style="outline:none;" alt="Bright Green" title="Bright Green" href="/home1?color=bright_green"
+                          coords="384,219,434,241,393,281" shape="poly">
+                    <area target="" style="outline:none;" alt="Bright Green" title="Bright Green" href="/home1?color=bright_green"
+                          coords="520,155,581,188,518,215" shape="poly">
+                    <area target="" style="outline:none;" alt="Bright Green" title="Bright Green" href="/home1?color=bright_green"
+                          coords="537,295,580,256,593,326" shape="poly">
+                    <area target="" style="outline:none;" alt="Green" title="Green" href="/home1?color=dark_green"
+                          coords="580,190,578,253,516,217" shape="poly">
+                    <area target="" style="outline:none;" alt="Green" title="Green" href="/home1?color=dark_green"
+                          coords="434,241,449,329,539,295" shape="poly">
+                    <area target="" style="outline:none;" alt="Green" title="Green" href="/home1?color=dark_green"
+                          coords="392,281,434,241,447,328" shape="poly">
+                    <area target="" style="outline:none;" alt="Green" title="Green" href="/home1?color=dark_green"
+                          coords="536,296,521,388,596,329" shape="poly">
+                    <area target="" style="outline:none;" alt="Light Blue" title="Light Blue" href="/home1?color=sky_blue"
+                          coords="393,281,388,365,448,331" shape="poly">
+                    <area target="" style="outline:none;" alt="Light Blue" title="Light Blue" href="/home1?color=sky_blue"
+                          coords="448,330,520,385,535,297" shape="poly">
+                    <area target="" style="outline:none;" alt="Light Blue" title="Light Blue" href="/home1?color=sky_blue"
+                          coords="388,367,432,428,448,331,411,354" shape="poly">
+                    <area target="" style="outline:none;" alt="Light Blue" title="Light Blue" href="/home1?color=sky_blue"
+                          coords="428,427,521,389,477,474" shape="poly">
+                    <area target="" style="outline:none;" alt="Blue" title="Blue" href="/home1?color=blue"
+                          coords="388,369,395,425,432,428" shape="poly">
+                    <area target="" style="outline:none;" alt="Blue" title="Blue" href="/home1?color=blue"
+                          coords="448,333,432,424,524,387" shape="poly">
+                    <area target="" style="outline:none;" alt="Blue" title="Blue" href="/home1?color=blue"
+                          coords="523,390,554,460,477,474" shape="poly">
+                    <area target="" style="outline:none;" alt="Blue" title="Blue" href="/home1?color=blue"
+                          coords="592,333,565,402,524,386" shape="poly">
+                    <area target="" style="outline:none;" alt="Purple" title="Purple" href="/home1?color=purple"
+                          coords="525,388,563,402,554,458" shape="poly">
+                    <area target="" style="outline:none;" alt="Purple" title="Purple" href="/home1?color=purple"
+                          coords="395,426,433,426,388,483" shape="poly">
+                    <area target="" style="outline:none;" alt="Purple" title="Purple" href="/home1?color=purple"
+                          coords="428,427,421,495,479,474" shape="poly">
+                    <area target="" style="outline:none;" alt="Purple" title="Purple" href="/home1?color=purple"
+                          coords="388,481,420,494,428,429" shape="poly">
+                    <area target="" style="outline:none;" alt="Purple" title="Purple" href="/home1?color=purple"
+                          coords="386,482,424,497,396,555" shape="poly">
+                    <area target="" style="outline:none;" alt="Purple" title="Purple" href="/home1?color=purple"
+                          coords="424,496,397,552,429,542" shape="poly">
+                    <area target="" style="outline:none;" alt="Purple" title="Purple" href="/home1?color=purple"
+                          coords="424,495,476,475,476,535" shape="poly">
+                    <area target="" style="outline:none;" alt="Purple" title="Purple" href="/home1?color=purple"
+                          coords="424,496,472,532,429,544" shape="poly">
+                    <area target="" style="outline:none;" alt="Purple" title="Purple" href="/home1?color=purple"
+                          coords="472,473,549,461,507,500" shape="poly">
+                    <area target="" style="outline:none;" alt="Purple" title="Purple" href="/home1?color=purple"
+                          coords="477,475,507,499,476,534" shape="poly">
+
+                </map>
+
             </div>
         </div>
-    </form>
+    </div>
+
+</div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="js/imageMapResizer.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+    $('map').imageMapResize();
+});
+
+</script>
+
 
 </body>
 </html>
+

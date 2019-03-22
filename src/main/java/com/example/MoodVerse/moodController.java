@@ -65,7 +65,7 @@ public class moodController {
         return "home";
     }
 
-    @PostMapping("/home")
+    @GetMapping("/home1")
     public String duringSession(HttpSession session, @RequestParam Color color){
        System.out.println("yaha aya  +  " + color);
        User userData = (User)session.getAttribute("user");
