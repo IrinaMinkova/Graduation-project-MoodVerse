@@ -124,14 +124,29 @@ model.addAttribute("moodHistory", moodHistory);
         System.out.println(userData.getFirstName());
         session.setAttribute("user", userData);
 
-          // ***************** Taking user color selection frequency *******************
+        // ***************** Taking user color selection frequency *******************
 
         HashMap<String, Integer> moodHistory = repository.frequencyOfUserColorHistory(userData.getEmail());
         model.addAttribute("moodHistory", moodHistory);
+
+        int colorFreq[] = new int[8];
+        int index=0;
+        for(String k: moodHistory.keySet()){
+            colorFreq[index] = moodHistory.get(k);
+            index++;
+        }
+
+        model.addAttribute("colorFreq", colorFreq);
+
+        System.out.println("Entry Set: "+moodHistory.entrySet());
+        String[] keyNames = {"red","bright_green","blue","orange","dark_green","yellow","sky_blue","purple"};
+
+
         System.out.println("Trying to check frequency functionality");
         System.out.println("This is frequency of  red color chosen by " +userData.getFirstName() + " " + " Frequency : " + moodHistory.get("red"));
         return "profile";
     }
+
 
 /*
     @GetMapping("/About")

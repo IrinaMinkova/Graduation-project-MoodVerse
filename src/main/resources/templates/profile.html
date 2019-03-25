@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:font-family="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>RESULTS</title>
+    <title>PROFILE</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
 
     <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -16,68 +18,77 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
 
     <!--INTERNAL SCRIPTS & STYLES-->
-    <link href="../static/css/home.css" rel="stylesheet" th:href="@{/css/home.css}">
-    <link href="../static/css/registration.css" rel="stylesheet" th:href="@{/registration/home.css}">
-</head>
-<body>
-<!--NAVBAR-->
-    <nav class="navbar">
-        <a class="navbar-brand active" href="/">
-            <img src="leftBrainRightBrain.png" alt="Logo" style="height: 70px;">
-        </a>
-        <p>[[${session.user.FirstName}]]</p>
+    <link href="../static/css/results.css" rel="stylesheet" th:href="@{/css/results.css}">
+    <link href="../static/css/registration.css" rel="stylesheet" th:href="@{/css/registration.css}">
 
-        <!--MEMBER-->
-        <div th:if="${session.user.FirstName != 'guest'}" >
-            <ul class="navbar nav">
-                <li class="navbar-item">
-                <p><li style="float:right"><a class="nav-link active" href="/logout" >Logout</a></p></li>
-                <p><li style="float:right"><a class="nav-link active" href="/home">Select Again</a></p></li>
-                </li>
-            </ul>
-        </div>
-    </nav>
+</head>
+
+<!--NAVBAR-->
+<nav class="navbar navbar-expand-md">
+    <a class="navbar-brand active" href="/">
+        <img src="leftBrainRightBrain.png" alt="Logo" style="height: 70px;">
+    </a>
+</nav>
+
+<ul class="navBar">
+    <li style="float:right"><a class="active" href="/home">Select Again</a></li>
+    <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+</ul>
+
+
 
 <!--MOOD HISTORY-->
-    <div class="container-fluid h-100 w-100">
-        <div class="row h-100">
-            <div class="col">
-                <div class="container portfolio">
-                    <div class="bio-content">
-                        <p></p>
-                    </div>
-                    <div class="bio-content2">
-                        <h1 th:text="${session.user.FirstName}"></h1>
-                        <h4>Your Mood History:</h4><br>
-                        <form action="/profile" method="POST">
-                        <input type="submit"  value="Check Mood History"></input>
-                        </form>
-                    </div>
-                        <br>
-                    <div  th:each="key: ${moodHistory.keySet()}">
-                        <p><span th:text="${key}"></span> :
+<div class="container-fluid h-100 w-100">
+    <div class="row">
+        <div class="col">
+            <div class="container portfolio">
+                <div class="bio-content">
+                    <p>This is the Mood Graph</p>
+
+                    <script th:inline="javascript">
+                            /*<![CDATA[*/
+
+                             var  user  = [[${colorFreq}]]
+
+
+                            /*]]>*/
+                            </script>
+                    <script th:src="@{/js/rotateP5a.js}"  src="../static/js/rotateP5a.js"></script>
+
+                </div>
+                <div class="bio-content2">
+                    <h1 th:text="${session.user.FirstName}"></h1>
+                    <h4>Your Mood History:</h4><br>
+
+
+                </div>
+                <br>
+                <div  th:each="key: ${moodHistory.keySet()}">
+                    <p><span th:text="${key}"></span> :
                         <span th:text="${moodHistory.get(key)}"></span></p>
-                    </div>
-                 </div>
+                </div>
             </div>
-            <div class="col">
-                <div id="login-box">
-                    <div class="left">
-                        <h1>Delete account</h1>
-                        <br>
-                        <form role="form" action="/deleteAccount" method="POST">
-                            <div>
-                                <!--input type="submit" name="email" th:value="${session.user.email}" />-->
-                                <!-- If this is used button will not display user email -->
-                                <input type="text" name="email" value="Email" />
-                                <input type="submit" name="email" value="Confirm" />
-                            </div>
-                        </form>
-                    </div>
+        </div>
+        <div class="col">
+            <div id="login-box">
+                <div class="left">
+                    <h1>Delete account</h1>
+                    <br>
+                    <form role="form" action="/deleteAccount" method="POST">
+                        <div>
+                            <!--input type="submit" name="email" th:value="${session.user.email}" />-->
+                            <!-- If this is used button will not display user email -->
+                            <input type="text" name="email" value="Email" />
+                            <input type="submit" name="email" value="Confirm" />
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
 
 </body>
 </html>
