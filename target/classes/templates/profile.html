@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:font-family="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <head>
     <meta charset="UTF-8">
-    <title>PROFILE</title>
+    <title>RESULTS</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
@@ -18,12 +20,19 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
 
     <!--INTERNAL SCRIPTS & STYLES-->
+<<<<<<< HEAD
     <link href="../static/css/results.css" rel="stylesheet" th:href="@{/css/results.css}">
     <link href="../static/css/registration.css" rel="stylesheet" th:href="@{/css/registration.css}">
 
+=======
+    <link href="../static/css/home.css" rel="stylesheet" th:href="@{/css/home.css}">
+    <link href="../static/css/registration.css" rel="stylesheet" th:href="@{/registration/home.css}">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+>>>>>>> Change the result cards
 </head>
-
+<body>
 <!--NAVBAR-->
+<<<<<<< HEAD
 <nav class="navbar navbar-expand-md">
     <a class="navbar-brand active" href="/">
         <img src="leftBrainRightBrain.png" alt="Logo" style="height: 70px;">
@@ -67,6 +76,46 @@
                     <p><span th:text="${key}"></span> :
                         <span th:text="${moodHistory.get(key)}"></span></p>
                 </div>
+=======
+    <nav class="navbar">
+        <a class="navbar-brand active" href="/">
+            <img src="leftBrainRightBrain.png" alt="Logo" style="height: 70px;">
+        </a>
+        <p>[[${session.user.FirstName}]]</p>
+
+        <!--MEMBER-->
+        <div th:if="${session.user.FirstName != 'guest'}" >
+            <ul class="navbar nav">
+                <li class="navbar-item">
+                <p><li style="float:right"><a class="nav-link active" href="/logout" >Logout</a></p></li>
+                <p><li style="float:right"><a class="nav-link active" href="/home">Select Again</a></p></li>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+<!--MOOD HISTORY-->
+    <div class="container-fluid h-100 w-100">
+        <div class="row h-100">
+            <div class="col">
+                <div class="container portfolio">
+                    <div class="bio-content">
+                        <p></p>
+                    </div>
+                    <div class="bio-content2">
+                        <h1 th:text="${session.user.FirstName}"></h1>
+                        <h4>Your Mood History:</h4><br>
+                        <form action="/profile" method="POST">
+                        <input type="submit"  value="Check Mood History"></input>
+                        </form>
+                    </div>
+                        <br>
+                    <div  th:each="key: ${moodHistory.keySet()}">
+                        <p><span th:text="${key}"></span> :
+                        <span th:text="${moodHistory.get(key)}"></span></p>
+                    </div>
+                 </div>
+>>>>>>> Change the result cards
             </div>
         </div>
         <div class="col">

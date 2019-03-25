@@ -163,7 +163,7 @@ public boolean checkEmail(String email){
             ps.setString(1, color);
             ResultSet rs = ps.executeQuery();
 
-               while(rs.next() && index < 5) {
+               while(rs.next() && index < 4) {
                    String newTitle = rs.getString("title");
 
                    if(index == 0){

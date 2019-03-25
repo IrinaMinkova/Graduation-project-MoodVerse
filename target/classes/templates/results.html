@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+<link rel="stylesheet" type="text/css" media="screen" href="../static/css/results.css"
+      th:href="@{/css/results.css}">
 <head>
     <meta charset="UTF-8">
     <title>RESULTS</title>
@@ -17,6 +18,7 @@
 
     <!--INTERNAL SCRIPTS & STYLES-->
     <link href="../static/css/home.css" rel="stylesheet" th:href="@{/css/home.css}">
+<<<<<<< HEAD
 </head>
 <body>
 <!--NAVBAR-->
@@ -61,10 +63,130 @@
                     <p class="card-text">Year: [[${movie.year}]]</p>
                     <p class="card-text">Popularity: [[${movie.popularity}]]</p>
                     <p class="card-text">Description: [[${movie.description}]]</p>
+=======
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <style>
+      #zatemnenie {
+        background: rgba(102, 102, 102, 0.5);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+      }
+      #okno {
+        width: 300px;
+        height: 50px;
+        text-align: center;
+        padding: 15px;
+        border: 3px solid #0000cc;
+        border-radius: 10px;
+        color: #0000cc;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        background: #fff;
+      }
+      #zatemnenie:target {display: block;}
+      .close {
+        display: inline-block;
+        border: 1px solid #0000cc;
+        color: #0000cc;
+        padding: 0 12px;
+        margin: 10px;
+        text-decoration: none;
+        background: #f2f2f2;
+        font-size: 14pt;
+        cursor:pointer;
+      }
+      .close:hover {background: #e6e6ff;}
+    </style>
+</head>
+<body>
+<!--NAVBAR-->
+
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand active">
+        <img src="leftBrainRightBrain.png" alt="Logo" style="height: 70px;">
+    </a>
+    <p>[[${session.user.FirstName}]]</p>
+
+    <!--MEMBER-->
+    <div th:if="${session.user.FirstName != 'guest'}">
+        <ul class="navbar nav">
+            <li class="navbar-item">
+                <form action="/profile" method="POST">
+            <li style="my-auto float:right"><input type="submit" class="profile" value="Profile"/></li>
+            </form>
+            <p>
+            <li style="float:right"><a class="nav-link active" href="/logout">Logout</a>
+            </p></li>
+            <p>
+            <li style="float:right"><a class="nav-link active" href="/home">Select Again</a>
+            </p></li>
+            </li>
+        </ul>
+    </div>
+
+    <!--GUEST-->
+    <div th:if="${session.user.FirstName == 'guest'}">
+        <ul class="navbar nav">
+            <li class="navbar-item">
+                <p>
+            <li style="float:right"><a class="nav-link active" href="/login">Login</a></p></li>
+            <p>
+            <li style="float:right"><a class="nav-link active" href="/registration">SignUp</a>
+            </p></li>
+            <p>
+            <li style="float:right"><a class="nav-link active" href="/home">Select Again</a>
+            </p></li>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<!--Containers for each movie suggestion -->
+
+<div class="container" id="result-container">
+    <div class="card-deck">
+        <div class="card" th:each="movie:${session.MovieArray}">
+            <img class="card-image-top img-fluid" th:src="'https://image.tmdb.org/t/p/w1280' + ${movie.Poster_path}"
+                 alt="Image Path" width="100%"></img>
+            <div class="card-block">
+                <h5 class="card-title">[[${movie.title}]]</h5>
+            </div>
+            <div class="card-block">
+                <p>
+                    <button class="btn btn-outline-secondary btn-block btn-group-justified" type="button"
+                            data-toggle="collapse" data-target="#collapseExample" aria-expanded="false"
+                            aria-controls="collapseExample">
+                        Details
+                    </button>
+                </p>
+            </div>
+            <div class="collapse" id="collapseExample">
+                <div class="card-body">
+                    <h4>Year:</h4> [[${movie.year}]]
+                    <h4>Popularity:</h4> [[${movie.popularity}]]
+                    <h4>Description:</h4> [[${movie.description}]]
+>>>>>>> Change the result cards
                 </div>
             </div>
         </div>
+
     </div>
+<<<<<<< HEAD
+=======
+
+</div>
+>>>>>>> Change the result cards
 
 </body>
 </html>
+

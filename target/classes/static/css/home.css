@@ -1,5 +1,9 @@
 body{
+<<<<<<< HEAD
     background-color:#f3f2f3;
+=======
+    background-color:#f2f3f2;
+>>>>>>> Change the result cards
     font-family: 'Roboto', sans-serif;
 }
 
@@ -58,4 +62,9 @@ h1 {
         top: 0px;
         left: 5px;
         font-size: 60px;
+<<<<<<< HEAD
       }
+=======
+      }
+
+>>>>>>> Change the result cards
